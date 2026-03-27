@@ -1,0 +1,115 @@
+<html>
+<head>
+    <title>Money Manager App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1 id="app-logo">Money Manager App</h1>
+        <div class="header-buttons">
+            <button id="downloadBtn" class="export-btn">Download Financial Data</button>
+            <button id="openModalBtn" class="add-btn">+ Add Transaction</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="summary-box">
+            <div class="card" style="background-color: MediumSeaGreen;">
+                <h3>Total Income</h3>
+                <p id="totalIncome">₹0.00</p>
+            </div>
+            <div class="card" style="background-color: Tomato;">
+                <h3>Total Expenses</h3>
+                <p id="totalExpense">₹0.00</p>
+            </div>
+            <div class="card" style="background-color: MediumSlateBlue;">
+                <h3>Net Balance</h3>
+                <p id="netBalance">₹0.00</p>
+            </div>
+        </section>
+
+        <section class="chart-container">
+            <h3>Expense Distribution</h3>
+            <div id="barChart" class="bar-chart">
+                </div>
+        </section>
+
+        <section class="controls">
+            <select id="filterCategory">
+                <option value="all">All Categories</option>
+                <option value="Income">Income Only</option>
+                <option value="Expense">Expense Only</option>
+            </select>
+            <select id="sortBy">
+                <option value="newest">Newest First</option>
+                <option value="oldest">Oldest First</option>
+                <option value="high">Highest Amount</option>
+            </select>
+        </section>
+
+        <section class="history">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Category</th>
+                        <th>Sub-Category</th>
+                        <th>Description</th>
+                        <th>Amount</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="transactionList"></tbody>
+            </table>
+        </section>
+    </div>
+
+    <div id="modalOverlay" class="modal">
+        <div class="modal-content">
+            <h2 id="modalTitle">Add Transaction</h2>
+            <form id="transactionForm">
+                <input type="hidden" id="editId">
+                
+                <div class="form-group">
+                    <label>Category:</label>
+                    <div class="radio-row">
+                        <input type="radio" name="category" value="Income" checked> Income
+                        <input type="radio" name="category" value="Expense"> Expense
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Amount (₹):</label>
+                    <input type="number" id="amount" step="0.01">
+                </div>
+
+                <div class="form-group">
+                    <label>Date:</label>
+                    <input type="date" id="date">
+                </div>
+
+                <div class="form-group">
+                    <label>Sub-Category:</label>
+                    <select id="subCategory"></select>
+                </div>
+
+                <div class="form-group">
+                    <label>Description (Optional):</label>
+                    <textarea id="description" maxlength="100"></textarea>
+                </div>
+
+                <div class="form-buttons">
+                    <button type="submit" class="save-btn">Save</button>
+                    <button type="button" id="closeModalBtn" class="cancel-btn">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+	<footer>
+    	  <p>&copy; 2026 Money Manager App, by Deepali Anthwal.</p>
+	</footer>
+<script src="script.js"></script>
+</body>
+</html>
